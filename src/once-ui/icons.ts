@@ -19,7 +19,7 @@ import {
 } from "react-icons/hi2";
 
 import {
-	FaDiscord,
+	FaLinkedin,
 	FaGithub
 } from "react-icons/fa6";
 
@@ -39,6 +39,6 @@ export const iconLibrary: Record<string, IconType> = {
 	person: HiMiniUser,
 	close: HiMiniXMark,
 	openLink: HiOutlineLink,
-	discord: FaDiscord,
+	linkedin: FaLinkedin,
 	github: FaGithub,
 };

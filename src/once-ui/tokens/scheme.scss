@@ -8,7 +8,7 @@
     --static-black-medium: #0000004D;
 
     /* CUSTOM */
-    /* 
+    /*
         Insert code for your custom color palette
         generated at https://once-ui.com/customize
     */
@@ -31,7 +31,7 @@
     --scheme-sand-600-10: #9994861A;
     --scheme-sand-600-30: #9994864D;
     --scheme-sand-600-50: #99948680;
-    
+
     /* gray */
     --scheme-gray-100:  #0A0A0A;
     --scheme-gray-200:  #151515;
@@ -49,7 +49,7 @@
     --scheme-gray-600-10: #9595951A;
     --scheme-gray-600-30: #9595954D;
     --scheme-gray-600-50: #95959580;
-    
+
     /* slate */
     --scheme-slate-100:  #040816;
     --scheme-slate-200:  #0F152B;
@@ -85,7 +85,7 @@
     --scheme-red-600-10: #FF5F531A;
     --scheme-red-600-30: #FF5F534D;
     --scheme-red-600-50: #FF5F5380;
-    
+
     /* orange */
     --scheme-orange-100:  #120605;
     --scheme-orange-200:  #270D0A;
@@ -103,7 +103,7 @@
     --scheme-orange-600-10: #FD63251A;
     --scheme-orange-600-30: #FD63254D;
     --scheme-orange-600-50: #FD632580;
-    
+
     /* yellow */
     --scheme-yellow-100:  #100704;
     --scheme-yellow-200:  #231009;
@@ -301,4 +301,36 @@
     --scheme-pink-600-10:  #F854BE1A;
     --scheme-pink-600-30:  #F854BE4D;
     --scheme-pink-600-50:  #F854BE80;
+
+	--scheme-brand-100: #100027;
+	--scheme-brand-200: #260242;
+	--scheme-brand-300: #523374;
+	--scheme-brand-400: #6b4c8f;
+	--scheme-brand-500: #8869af;
+	--scheme-brand-600: #a787cf;
+	--scheme-brand-600-10: rgba(167,135,207,0.1);
+	--scheme-brand-600-30: rgba(167,135,207,0.3);
+	--scheme-brand-600-50: rgba(167,135,207,0.5);
+	--scheme-brand-700: #c6a6f1;
+	--scheme-brand-800: #eac9ff;
+	--scheme-brand-900: #f7d6ff;
+	--scheme-brand-1000: #ffe7ff;
+	--scheme-brand-1100: #ffedff;
+	--scheme-brand-1200: #ffedff;
+
+	--scheme-accent-100: #1d0000;
+	--scheme-accent-200: #370000;
+	--scheme-accent-300: #6d2e00;
+	--scheme-accent-400: #8c4b00;
+	--scheme-accent-500: #a86509;
+	--scheme-accent-600: #cc873a;
+	--scheme-accent-600-10: rgba(204,135,58,0.1);
+	--scheme-accent-600-30: rgba(204,135,58,0.3);
+	--scheme-accent-600-50: rgba(204,135,58,0.5);
+	--scheme-accent-700: #eea65b;
+	--scheme-accent-800: #ffcd82;
+	--scheme-accent-900: #ffdd92;
+	--scheme-accent-1000: #ffeea2;
+	--scheme-accent-1100: #ffeea2;
+	--scheme-accent-1200: #ffeea2;
 }

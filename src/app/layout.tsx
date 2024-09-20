@@ -40,10 +40,13 @@ export default function RootLayout({
 		<Flex
 			as="html" lang="en"
 			fillHeight background="page"
-			data-neutral="gray" data-brand="blue" data-accent="violet"
-			data-solid="color" data-solid-style="flat"
 			data-theme="dark"
+			data-brand="blue"
+			data-accent="cyan"
+			data-neutral="slate"
 			data-border="playful"
+			data-solid="contrast"
+			data-solid-style="flat"
 			data-surface="filled"
 			data-transition="all"
 			className={classNames(
