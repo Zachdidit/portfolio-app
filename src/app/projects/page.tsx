@@ -55,7 +55,7 @@ export default function Page() {
 		{projects.map((link) => (
 			<Flex direction="row">
 				<Flex
-					maxWidth={20} paddingY="8" gap="8"
+					maxWidth={80}  gap="8"
 					direction="column">
 						<Link
 						target="_blank"
@@ -80,10 +80,10 @@ export default function Page() {
 					</Link>
 				</Flex>
 				<Flex
-					maxWidth={20} gap="12" marginLeft='80'
+					maxWidth={30} gap="12"
 					alignItems="right">
 					<Text
-						variant="body-strong-m" onBackground="neutral-strong">
+						variant="body-strong-m" onBackground="neutral-strong"  style={{ display: 'none' }}>
 						{link.description}
 					</Text>
 				</Flex>
