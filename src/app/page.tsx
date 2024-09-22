@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function Home() {
 	const links = [
 		{
-			href: "https://once-ui.com/docs/theming",
+			href: "/projects",
 			title: "Projects",
 			description: "What I've worked on",
 		},
