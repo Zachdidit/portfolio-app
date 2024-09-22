@@ -25,4 +25,4 @@ jobs:
               npm prune # we remove any unused dependencies
               npm install # we install any missing dependencies
               npm run build # we build our app
-              pm2 reload all # we reload the app via PM2
+              pm2 start npm --name portfolio-app -- run start -- -p 3000
