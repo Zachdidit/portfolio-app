@@ -10,19 +10,16 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: deploy
-    runs-on: ubuntu-latest    
+    environment: production        
     steps:
         - name: Deploying to AWS
-        uses: appleboy/ssh-action@master # An action made to control Linux servers
-        with: # We set all our secrets here for the action, these won't be shown in the action logs
+          uses: appleboy/ssh-action@master # An action made to control Linux servers
+          with: # We set all our secrets here for the action, these won't be shown in the action logs
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          run: |
+          script: |
             cd ${{ secrets.APPDIR }}
             git pull # we pull any changes from git
             npm prune # we remove any unused dependencies
