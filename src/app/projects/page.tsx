@@ -44,53 +44,58 @@ export default function Page() {
 
 	];
 	return (
-	<Grid
-		radius="l"
-		border="neutral-medium"
-		borderStyle="solid-1"
-		columns="repeat(3, 1fr)"
-		tabletColumns="2col"
-		mobileColumns="2col"
-		fillWidth>
-		{projects.map((link) => (
-			<Flex direction="row">
-				<Flex
-					maxWidth={80}  gap="8"
-					direction="column">
-						<Link
-						target="_blank"
-						style={{ padding: 'var(--responsive-space-l)' }}
-						key={link.href}
-						href={link.href}>
-						<Image
-							src={link.img}
-							width={324}
-							height={243}
-							alt="Picture of the Project"
-						/>
-						<Flex
-							fillWidth gap="12"
-							alignItems="center">
-							<Text
-								variant="body-strong-m" onBackground="neutral-strong">
-								{link.title}
-							</Text>
-							<Icon size="s" name="arrowUpRight" />
-						</Flex>
-					</Link>
+	<Flex
+		position="relative"
+		as="section" overflow="hidden"
+		fillWidth minHeight="0"
+		direction="column" alignItems="center">
+		<Grid
+			radius="l"
+			border="neutral-medium"
+			borderStyle="solid-1"
+			columns="repeat(3, 1fr)"
+			tabletColumns="2col"
+			mobileColumns="2col"
+			fillWidth>
+			{projects.map((link) => (
+				<Flex direction="row">
+					<Flex
+						maxWidth={80}  gap="8"
+						direction="column">
+							<Link
+							target="_blank"
+							style={{ padding: 'var(--responsive-space-l)' }}
+							key={link.href}
+							href={link.href}>
+							<Image
+								src={link.img}
+								width={324}
+								height={243}
+								alt="Picture of the Project"
+							/>
+							<Flex
+								fillWidth gap="12"
+								alignItems="center">
+								<Text
+									variant="body-strong-m" onBackground="neutral-strong">
+									{link.title}
+								</Text>
+								<Icon size="s" name="arrowUpRight" />
+							</Flex>
+						</Link>
+					</Flex>
+					<Flex
+						maxWidth={30} gap="12"
+						alignItems="right">
+						<Text
+							variant="body-strong-m" onBackground="neutral-strong"  style={{ display: 'none' }}>
+							{link.description}
+						</Text>
+					</Flex>
 				</Flex>
-				<Flex
-					maxWidth={30} gap="12"
-					alignItems="right">
-					<Text
-						variant="body-strong-m" onBackground="neutral-strong"  style={{ display: 'none' }}>
-						{link.description}
-					</Text>
-				</Flex>
-			</Flex>
-		))}
-	</Grid>
-
+			))}
+		</Grid>
+	</Flex>
 
 	);
   }

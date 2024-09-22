@@ -1,10 +1,13 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
-import { Flex } from '@/once-ui/components'
+import { Flex, Background } from '@/once-ui/components'
 import classNames from 'classnames';
 import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
+
+import Navbar from './navbar'
+import Footer from './footer'
 
 const primary = Inter({
 	variable: '--font-primary',
@@ -55,12 +58,23 @@ export default function RootLayout({
 				tertiary ? tertiary.variable : '',
 				code.variable,
 				'root')}>
+
 			<Flex
 				as="body"
 				fillWidth fillHeight margin="0" padding="0">
+			<Flex
+			fillWidth paddingTop="l" paddingX="l"
+			direction="column" alignItems="center" flex={1}>
+			<Background
+				dots={false}
+				gradient={true}
+				lines={false}/>
+				<Navbar />
 				<Flex
-					flex={1} direction="column">
+					flex={5} direction="column">
 					{children}
+				</Flex>
+				<Footer />
 				</Flex>
 			</Flex>
 		</Flex>
