@@ -15,14 +15,14 @@ jobs:
         - name: Deploying to AWS
           uses: appleboy/ssh-action@master # An action made to control Linux servers
           with: # We set all our secrets here for the action, these won't be shown in the action logs
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd ${{ secrets.APPDIR }}
-            git pull # we pull any changes from git
-            npm prune # we remove any unused dependencies
-            npm install # we install any missing dependencies
-            npm run build # we build our app
-            pm2 reload all # we reload the app via PM2
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            port: ${{ secrets.PORT }}
+            script: |
+              cd ${{ secrets.APPDIR }}
+              git pull # we pull any changes from git
+              npm prune # we remove any unused dependencies
+              npm install # we install any missing dependencies
+              npm run build # we build our app
+              pm2 reload all # we reload the app via PM2
