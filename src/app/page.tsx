@@ -36,8 +36,8 @@ export default function Home() {
 					direction="column" justifyContent="center"
 					fillWidth fillHeight padding="l" gap="l">
 					<Flex
-						mobileDirection="column"
-						fillWidth gap="24">
+						mobileDirection="column" direction='row'
+						fillWidth gap="24" alignItems='center' align='center'>
 						<Flex
 							position="relative"
 							flex={2} paddingTop="0" paddingX="xl">
