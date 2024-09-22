@@ -1,23 +1,28 @@
-name: Portfolio Deploy
-on: [push] # tells github to run this on any push to the repository
+name: Deployment
+
+concurrency: production
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deployment:
     runs-on: ubuntu-latest
     environment: production
-
-
-  deploy:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # we tell Github to only execute this step if we're on our master branch (so we don't put unfinished branches in production)
     steps:
-      - name: Deploying to AWS
+      - name: deploy
+    runs-on: ubuntu-latest    
+    steps:
+        - name: Deploying to AWS
         uses: appleboy/ssh-action@master # An action made to control Linux servers
         with: # We set all our secrets here for the action, these won't be shown in the action logs
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: |
+          run: |
             cd ${{ secrets.APPDIR }}
             git pull # we pull any changes from git
             npm prune # we remove any unused dependencies
