@@ -71,7 +71,7 @@ export default function RootLayout({
 				lines={false}/>
 				<Navbar />
 				<Flex
-					flex={1} direction="row">
+					flex={5} direction="column">
 					{children}
 				</Flex>
 				<Footer />

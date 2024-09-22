@@ -30,13 +30,13 @@ export default function Home() {
 				position="relative"
 				as="section" overflow="hidden"
 				fillWidth minHeight="0"
-				direction="row" alignItems="center" flex={1}>
+				direction="column" alignItems="center">
 				<Flex
 					as="main"
 					direction="column" justifyContent="center"
 					fillWidth fillHeight padding="l" gap="l">
 					<Flex
-						mobileDirection="column" direction='row'
+						mobileDirection="column" direction='column'
 						fillWidth gap="24" alignItems='center' align='center'>
 						<Flex
 							position="relative"
@@ -48,7 +48,7 @@ export default function Home() {
 						</Flex>
 						<Flex
 							position="relative"
-							flex={4} gap="24" marginBottom="104"
+							flex={4} gap="24" marginBottom="104" maxWidth={60}
 							direction="column">
 							<Heading
 								wrap="balance"
