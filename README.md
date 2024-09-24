@@ -5,17 +5,20 @@
 
 ![Once UI](public/images/cover.png)
 
-<span style="font-size: 18px;">Start building your Next.js app in minutes with:</span> 
-* **A robust token and style system** that simplifies customization and ensures consistency. 
-* **A copy-and-paste component library** that integrates seamlessly into your project.
-* **Interactive documentation** to apply your branding and set component properties.
-<br><br>
+<span style="font-size: 18px;">Start building your Next.js app in minutes with:</span>
+
+- **A robust token and style system** that simplifies customization and ensures consistency.
+- **A copy-and-paste component library** that integrates seamlessly into your project.
+- **Interactive documentation** to apply your branding and set component properties.
+  <br><br>
 
 # **Documentation**
+
 The documentation is available at [once-ui.com/docs](https://once-ui.com/docs).
 <br><br>
 
 # **Authors**
+
 Connect with us on X or LinkedIn.
 
 Lorant Toth: [X](https://x.com/lorant_one), [LinkedIn](https://www.linkedin.com/in/lorant-one/)  
@@ -23,10 +26,11 @@ Zsofia Komaromi: [X](https://x.com/zsofiakomaromi), [LinkedIn](https://www.linke
 <br><br>
 
 # **Get involved**
+
 - Join the [Once UI Discord server](https://discord.com/invite/5EyAQ4eNdS) to connect with designers, developers and share your projects.
 - Report a [bug](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=bug&template=bug_report.md).
 - Submit a [feature request](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=feature%20request&template=feature_request.md).
-<br><br>
+  <br><br>
 
 # **License**
 
