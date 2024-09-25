@@ -1,16 +1,6 @@
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
-import {
-  Heading,
-  Text,
-  Flex,
-  Button,
-  Grid,
-  Icon,
-  Background,
-  Avatar,
-  LetterFx,
-} from "@/once-ui/components";
-import Image from "next/image";
+import { Text, Flex, Grid, Icon } from "@/once-ui/components";
+import { ImageTile } from "@/app/components";
 import Link from "next/link";
 
 export default function Page() {
@@ -86,11 +76,11 @@ export default function Page() {
                 key={link.href}
                 href={link.href}
               >
-                <Image
-                  src={link.img}
+                <ImageTile
                   width={324}
                   height={243}
-                  alt="Picture of the Project"
+                  src={link.img}
+                  alt={link.title}
                 />
                 <Flex fillWidth gap="12" alignItems="center">
                   <Text variant="body-strong-m" onBackground="neutral-strong">

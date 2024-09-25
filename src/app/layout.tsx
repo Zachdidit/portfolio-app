@@ -1,4 +1,5 @@
 import "@/once-ui/styles/index.scss";
+import "@/app/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
 import { Flex, Background } from "@/once-ui/components";
