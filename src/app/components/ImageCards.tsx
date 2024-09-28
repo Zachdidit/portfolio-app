@@ -1,11 +1,7 @@
 "use client";
 
-import React, { forwardRef, useRef, useEffect, RefObject } from "react";
-import {
-	Heading,
-	Text,
-	Flex,
-  } from "@/once-ui/components";
+import React, { forwardRef, useRef, useEffect, RefObject, useMemo, createRef } from "react";
+import { Heading, Text} from "@/once-ui/components";
 import Image from "next/image";
 import imageCardsStyle from "./ImageCards.module.scss";
 
@@ -24,38 +20,56 @@ type ImageCardsProps = {
   cards: Array<Card>;
 };
 
+const useCardEffect = (cardContainer : RefObject<HTMLDivElement>, cardsRef : RefObject<HTMLDivElement[]>) => {
+	const handleMouseLeave = (e: MouseEvent) => {
+		console.log('Mouse Leave');
+	};
+	const handleScroll = (e: Event) => {
+		console.log('Scroll detected: ' + e.target)
+	};
+	useEffect(() => {
+		const cardContainder = cardContainer;
+		const cards = cardsRef;
+		return () => {
+		};
+	  }, [cardContainer]);
+}
 const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
   ({ cards }, ref) => {
-    const cardsRef = useRef<HTMLDivElement>(null);
+    const cardContainerRef = useRef<HTMLDivElement>(null);
+	const cardsRefsById = useRef<HTMLDivElement[]>([]);
+
+	useCardEffect(cardContainerRef,cardsRefsById);
     return (
-      <Flex
-	  position="relative"
-      overflow="hidden"
-      minHeight="0"
-      direction="column"
-      alignItems="center"
-	  className={imageCardsStyle.cards}
-	  ref={cardsRef}>
+      <div className={imageCardsStyle.cards} ref={cardContainerRef}>
         {cards.map((card, i) => (
-          <Flex key={i} className={imageCardsStyle.card} alignItems="start" direction="row" data-index="0">
-            <Flex key={i}  className={imageCardsStyle.imagecontainer}>
-              <Flex key={i}  className={imageCardsStyle.imagecontainer} flex={0}>
-                <img key={i}
-				  className={imageCardsStyle.image}
+          <div id={i+"_"+card.title} key={i+"_"+card.title} className={imageCardsStyle.card} ref={(element) =>
+			{
+				if (element) {
+					cardsRefsById.current.push(element)
+				}
+			}}>
+
+            <div className={imageCardsStyle.inner}>
+              <div className={imageCardsStyle.imagecontainer}>
+                <img
+                  className={imageCardsStyle.image}
                   src={card.img}
                   alt={card.title}
                 />
-              </Flex>
-              <Flex key={i} direction="column" className={imageCardsStyle.content}>
-                <h1 key={i} className={imageCardsStyle.title}>{card.title}</h1>
-                <p key={i} className={imageCardsStyle.description}>
+              </div>
+              <div className={imageCardsStyle.content}>
+                <Heading className={imageCardsStyle.title}>
+                  {card.title}
+                </Heading>
+                <Text className={imageCardsStyle.description}>
                   {card.description}
-                </p>
-              </Flex>
-            </Flex>
-          </Flex>
+                </Text>
+              </div>
+            </div>
+          </div>
         ))}
-      </Flex>
+      </div>
     );
   },
 );
