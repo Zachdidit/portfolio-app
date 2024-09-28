@@ -1,7 +1,14 @@
 "use client";
 
-import React, { forwardRef, useRef, useEffect, RefObject, useMemo, createRef } from "react";
-import { Heading, Text} from "@/once-ui/components";
+import React, {
+  forwardRef,
+  useRef,
+  useEffect,
+  RefObject,
+  useMemo,
+  createRef,
+} from "react";
+import { Heading, Text } from "@/once-ui/components";
 import Image from "next/image";
 import imageCardsStyle from "./ImageCards.module.scss";
 
@@ -23,53 +30,60 @@ type ImageCardsProps = {
 const cardOffset: number = 20;
 const cardScale: number = 1;
 
-const useCardEffect = (cardsContainerRef : RefObject<HTMLDivElement>, cardsRef : RefObject<HTMLDivElement[]>) => {
-	const handleMouseLeave = (e: MouseEvent) => {
-		console.log('Mouse Leave');
-	};
-	const handleScroll = (e: Event) => {
-		console.log('Scroll detected: ' + e.target)
-	};
-	useEffect(() => {
-		const cardsContainer = cardsContainerRef.current;
-		const cards = cardsRef.current;
+const useCardEffect = (
+  cardsContainerRef: RefObject<HTMLDivElement>,
+  cardsRef: RefObject<HTMLDivElement[]>,
+) => {
+  const handleMouseLeave = (e: MouseEvent) => {
+    console.log("Mouse Leave");
+  };
+  const handleScroll = (e: Event) => {
+    console.log("Scroll detected: " + e.target);
+  };
+  useEffect(() => {
+    const cardsContainer = cardsContainerRef.current;
+    const cards = cardsRef.current;
 
-		let cardHeight = 50;
+    let cardHeight = 50;
 
-		if (cards?.[0]?.clientHeight){
-			cardHeight = cards[0].clientHeight;
-		}
+    if (cards?.[0]?.clientHeight) {
+      cardHeight = cards[0].clientHeight;
+    }
 
-		cardsContainer?.style.setProperty('--cards-count', String(cards?.length));
-		cardsContainer?.style.setProperty('--card-height', String(cardHeight) + 'px')
+    cardsContainer?.style.setProperty("--cards-count", String(cards?.length));
+    cardsContainer?.style.setProperty(
+      "--card-height",
+      String(cardHeight) + "px",
+    );
 
-		cards?.forEach((card,index) => {
-			card.style.paddingTop = `${cardOffset + index * cardOffset}px`
-			if (index === cards.length - 1) return;
-			const toScale = cardScale - (cards.length - 1 - index) * .1;
-			const nextCard = cards[index+1];
-			const cardInner = card.querySelector('.inner');
-		})
-		return () => {
-		};
-	  }, [cardsContainerRef, cardsRef]);
-}
+    cards?.forEach((card, index) => {
+      card.style.paddingTop = `${cardOffset + index * cardOffset}px`;
+      if (index === cards.length - 1) return;
+      const toScale = cardScale - (cards.length - 1 - index) * 0.1;
+      const nextCard = cards[index + 1];
+      const cardInner = card.querySelector(".inner");
+    });
+    return () => {};
+  }, [cardsContainerRef, cardsRef]);
+};
 const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
   ({ cards }, ref) => {
     const cardContainerRef = useRef<HTMLDivElement>(null);
-	const cardsRefsById = useRef<HTMLDivElement[]>([]);
+    const cardsRefsById = useRef<HTMLDivElement[]>([]);
 
-	useCardEffect(cardContainerRef,cardsRefsById);
+    useCardEffect(cardContainerRef, cardsRefsById);
     return (
       <div className={imageCardsStyle.cards} ref={cardContainerRef}>
         {cards.map((card, i) => (
-          <div key={i} className={imageCardsStyle.card} ref={(element) =>
-			{
-				if (element) {
-					cardsRefsById.current.push(element)
-				}
-			}}>
-
+          <div
+            key={i}
+            className={imageCardsStyle.card}
+            ref={(element) => {
+              if (element) {
+                cardsRefsById.current.push(element);
+              }
+            }}
+          >
             <div className={imageCardsStyle.inner}>
               <div className={imageCardsStyle.imagecontainer}>
                 <img
