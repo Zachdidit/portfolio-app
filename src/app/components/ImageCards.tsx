@@ -20,7 +20,10 @@ type ImageCardsProps = {
   cards: Array<Card>;
 };
 
-const useCardEffect = (cardContainer : RefObject<HTMLDivElement>, cardsRef : RefObject<HTMLDivElement[]>) => {
+const cardOffset: number = 20;
+const cardScale: number = 1;
+
+const useCardEffect = (cardsContainerRef : RefObject<HTMLDivElement>, cardsRef : RefObject<HTMLDivElement[]>) => {
 	const handleMouseLeave = (e: MouseEvent) => {
 		console.log('Mouse Leave');
 	};
@@ -28,11 +31,28 @@ const useCardEffect = (cardContainer : RefObject<HTMLDivElement>, cardsRef : Ref
 		console.log('Scroll detected: ' + e.target)
 	};
 	useEffect(() => {
-		const cardContainder = cardContainer;
-		const cards = cardsRef;
+		const cardsContainer = cardsContainerRef.current;
+		const cards = cardsRef.current;
+
+		let cardHeight = 50;
+
+		if (cards?.[0]?.clientHeight){
+			cardHeight = cards[0].clientHeight;
+		}
+
+		cardsContainer?.style.setProperty('--cards-count', String(cards?.length));
+		cardsContainer?.style.setProperty('--card-height', String(cardHeight) + 'px')
+
+		cards?.forEach((card,index) => {
+			card.style.paddingTop = `${cardOffset + index * cardOffset}px`
+			if (index === cards.length - 1) return;
+			const toScale = cardScale - (cards.length - 1 - index) * .1;
+			const nextCard = cards[index+1];
+			const cardInner = card.querySelector('.inner');
+		})
 		return () => {
 		};
-	  }, [cardContainer]);
+	  }, [cardsContainerRef, cardsRef]);
 }
 const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
   ({ cards }, ref) => {
@@ -43,7 +63,7 @@ const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
     return (
       <div className={imageCardsStyle.cards} ref={cardContainerRef}>
         {cards.map((card, i) => (
-          <div id={i+"_"+card.title} key={i+"_"+card.title} className={imageCardsStyle.card} ref={(element) =>
+          <div key={i} className={imageCardsStyle.card} ref={(element) =>
 			{
 				if (element) {
 					cardsRefsById.current.push(element)
