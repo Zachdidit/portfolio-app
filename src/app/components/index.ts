@@ -1,1 +1,1 @@
-export { ImageTile } from "./ImageTile";
+export { ImageCards } from "./ImageCards";
