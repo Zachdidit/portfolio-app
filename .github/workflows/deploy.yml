@@ -10,7 +10,7 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: production        
+    environment: production
     steps:
         - name: Deploying to AWS
           uses: appleboy/ssh-action@master # An action made to control Linux servers
@@ -26,3 +26,4 @@ jobs:
               npm install # we install any missing dependencies
               npm run build # we build our app
               pm2 restart portfolio-app
+
