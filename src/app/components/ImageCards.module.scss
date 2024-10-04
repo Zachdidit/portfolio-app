@@ -48,13 +48,14 @@
     }
   }
 
-  .space {
-    height: 90vh;
-  }
+}
 
-  .space--small {
-    height: 40vh;
-  }
+.space {
+  height: 50vh;
+}
+
+.spacesmall {
+  height: 20vh;
 }
 
 @media (max-width: 600px) {

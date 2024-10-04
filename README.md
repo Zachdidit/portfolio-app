@@ -21,7 +21,7 @@ The documentation is available at [once-ui.com/docs](https://once-ui.com/docs).
 
 Connect with us on X or LinkedIn.
 
-Lorant Toth: [X](https://x.com/lorant_one), [LinkedIn](https://www.linkedin.com/in/lorant-one/)  
+Lorant Toth: [X](https://x.com/lorant_one), [LinkedIn](https://www.linkedin.com/in/lorant-one/)
 Zsofia Komaromi: [X](https://x.com/zsofiakomaromi), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
 <br><br>
 
@@ -39,7 +39,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 # **Once UI for Figma**
 
-Once UI is also available for Figma.  
+Once UI is also available for Figma.
 Design and prototype entire products from scratch in hours. Use the same tokens and components as the Next.js design system.
 
 Grab a copy from the [Figma Community](https://figma.com/).
