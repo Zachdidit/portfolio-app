@@ -9,11 +9,6 @@ export default function Navbar() {
       description: "",
     },
     {
-      href: "/projects",
-      title: "Projects",
-      description: "What I've worked on",
-    },
-    {
       href: "mailto:zachdidit@gmail.com",
       title: "Hire Me",
       description: "Let's make something great",
@@ -32,14 +27,14 @@ export default function Navbar() {
       overflow="hidden"
       fillWidth
       direction="row"
-      alignItems="start"
+      alignItems="center"
       flex={1}
     >
       <Grid
         radius="l"
         border="neutral-medium"
         borderStyle="solid-1"
-        columns="repeat(4, 1fr)"
+        columns="repeat(3, 1fr)"
         tabletColumns="1col"
         mobileColumns="1col"
         fillWidth
