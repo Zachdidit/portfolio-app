@@ -5,15 +5,12 @@ import React, {
   useRef,
   useEffect,
   RefObject,
-  useMemo,
-  createRef,
 } from "react";
-import { Heading, Text } from "@/once-ui/components";
-import Image from "next/image";
+import { Heading, Text, Flex } from "@/once-ui/components";
 import imageCardsStyle from "./ImageCards.module.scss";
-
 import { Card } from "../types";
-import { inherits } from "util";
+
+import { ScrollObserver, valueAtPercentage } from '@/app/lib/aat';
 
 const sizeMap: Record<string, string> = {
   xs: "var(--static-space-16)",
@@ -29,6 +26,7 @@ type ImageCardsProps = {
 
 const cardOffset: number = 20;
 const cardScale: number = 1;
+
 
 const useCardEffect = (
   cardsContainerRef: RefObject<HTMLDivElement>,
@@ -57,14 +55,41 @@ const useCardEffect = (
     );
 
     cards?.forEach((card, index) => {
-      card.style.paddingTop = `${cardOffset + index * cardOffset}px`;
+      const offsetTop = cardOffset + cardOffset * cardOffset;
+	card.style.paddingTop = `${cardOffset + index * cardOffset}px`;
       if (index === cards.length - 1) return;
       const toScale = cardScale - (cards.length - 1 - index) * 0.1;
       const nextCard = cards[index + 1];
-      const cardInner = card.querySelector(".inner");
+      const cardInner = card.children[0] as HTMLElement;
+
+	  new ScrollObserver();
+	  ScrollObserver.Element(nextCard, {
+		offsetTop: 0,
+		offsetBottom: window.innerHeight - card.clientHeight,
+		offsetLeft: 0,
+		offsetRight: 0,
+		addWrapper: false,
+		wrapperClass: '',
+		container: document.documentElement
+
+	  }).onScroll(({ percentageY }) => {
+		if(cardInner === null) return;
+		if(cardInner.style === null) return;
+		cardInner.style.scale = valueAtPercentage({
+		  from: 1,
+		  to: toScale,
+		  percentage: percentageY
+		}).toString();
+		cardInner.style.filter = `brightness(${valueAtPercentage({
+		  from: 1,
+		  to: 0.6,
+		  percentage: percentageY
+		}).toString()})`;
+	  });
+
     });
     return () => {};
-  }, [cardsContainerRef, cardsRef]);
+  }, [cardsContainerRef, cardsRef]); // Work here to ensure useEffect runs ONCE
 };
 const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
   ({ cards }, ref) => {
@@ -73,7 +98,16 @@ const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
 
     useCardEffect(cardContainerRef, cardsRefsById);
     return (
-      <div className={imageCardsStyle.cards} ref={cardContainerRef}>
+	  <Flex
+	  position="relative"
+      as="section"
+      overflow="hidden"
+      fillWidth
+      minHeight="0"
+      direction="column"
+      alignItems="center">
+	<div className={`${imageCardsStyle.space} ${imageCardsStyle.spacesmall}`}></div>
+	  <div className={imageCardsStyle.cards} ref={cardContainerRef}>
         {cards.map((card, i) => (
           <div
             key={i}
@@ -104,6 +138,8 @@ const ImageCards = forwardRef<HTMLDivElement, ImageCardsProps>(
           </div>
         ))}
       </div>
+	  <div className={imageCardsStyle.space}></div>
+	  </Flex>
     );
   },
 );
